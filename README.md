@@ -5,6 +5,8 @@ Name: Nickara_MNIST_Model
 Type: Convolutional Neural Network (CNN)
 Framework: Keras
 Purpose: This model can be used to identify handwritten digits. The model was trained using data augmentation, making it more resilient against imperfect data.
+Disclaimer: The model in the docker container is not the updated version. The model in this repository has an accuracy of 98.86% and the model in the docker       
+            container has an accuracy of 96.66%
 
 Data Augmentation and Splitting
 Our original dataset is the Keras MNIST dataset. However, we used ImageDataGenerator to augment the images. Our settings are as follows:
@@ -95,4 +97,7 @@ We registered the best model in MLFlow and integrated it with APIFlow
    docker run -p 8000:8000 Nickara_MNIST_Container
 
 ##Deployment Process
+1. use predict(
+
+##
 </pre>
