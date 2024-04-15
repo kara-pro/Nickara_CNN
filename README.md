@@ -1,23 +1,22 @@
 <pre>
-Model Description:
+**Model Description:**
 
 Name: Nickara_MNIST_Model
 Type: Convolutional Neural Network (CNN)
 Framework: Keras
 Purpose: This model can be used to identify handwritten digits. The model was trained using data augmentation, making it more resilient against imperfect data.
-Disclaimer: The model in the docker container is not the updated version. The model in this repository has an accuracy of 98.86% and the model in the docker       
-            container has an accuracy of 96.66%
+Disclaimer: The model in the docker container is not the updated version. The model in this repository has an                    accuracy of 98.86% and the model in the docker container has an accuracy of 96.66%
 
 Data Augmentation and Splitting
 Our original dataset is the Keras MNIST dataset. However, we used ImageDataGenerator to augment the images. Our settings are as follows:
    ImageDataGenerator(width_shift_range=.2, height_shift_range=.2, rotation_range=15, fill_mode='constant',rescale=1./255, zoom_range=[.75,2])
 
-   This shifts the images horizontally and vertically, rotates them a little, zoomins in and out of them, and recales the images to grayscale.
+   This shifts the images horizontally and vertically, rotates them a little, zooms in and out of them, and recales the images to grayscale.
 
 We split this into train and validation data sets with a test_size of 0.2, shuffle=True, and stratifying on the labels.
 
 
-Model Architecture
+**Model Architecture**
 
 Our model has the following layers:
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
@@ -58,22 +57,22 @@ Our model has the following layers:
  Non-trainable params: 384 (1.50 KB)
  Optimizer params: 180,700 (705.86 KB)
 
-Activation Functions:
+_Activation Functions:_
    - ReLU (Rectified Linear Unit) in hidden layers
    - Softmax in the output layer
 
-Output Layer:
+_Output Layer:_
    - Dense layer with 10 units (number of classes) and softmax activation function
 
-Training Procedure:
+_Training Procedure:_
    - Optimization Algorithm: SDG
    - Loss Function: Categorical Cross-Entropy
    - Regularization: Dropout (rate=0.2)
 
-Model Performance
+_Model Performance_
    - Validation Accuracy: 0.9886
    
-Confusion Matrix
+_Confusion Matrix_
  [ 969    1    1    0    1    0    1    0    0    0]
  [   0 1129    0    0    0    0    3    1    1    0]
  [   2    2 1025    0    0    0    0    8    1    0]
@@ -88,7 +87,7 @@ Confusion Matrix
 ##Steps for MLFlow Integration
 For MLFLow integration, we used it in conjunction with HyperOpt. Our search space was on the dropout rate, activation functions for the convolution layers, and the size of the convolution layers. We did 5 evalutions and found that the above architecture without the additional dropouts after the convolution layers performed the best. However, by adding more dropouts we got better results.
 
-We registered the best model in MLFlow and integrated it with APIFlow
+We registered the best model in MLFlow and integrated it with FastAPI
 
 ##Steps for API usage
 1. Download the docker container
@@ -97,7 +96,10 @@ We registered the best model in MLFlow and integrated it with APIFlow
    docker run -p 8000:8000 Nickara_MNIST_Container
 
 ##Deployment Process
-1. use predict(
+1. Download the Nickara_MNIST_Container and open a terminal on your machine
+2. Use docker start to activate your instance of Docker and run 'docker ps -a' to verify you have downloaded the container
+3. Enter 'docker run -it -d --name Nickara_MNIST_Container image_name bash' to start container and the image
+4. Enter 'docker exec -e VAR_A=1 -e VAR_B=2 Nickara_MNIST_Container env' to start change the environment container if needed. This can be changed to suit your needs.
 
 ##
 </pre>
