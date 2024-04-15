@@ -89,17 +89,22 @@ For MLFLow integration, we used it in conjunction with HyperOpt. Our search spac
 
 We registered the best model in MLFlow and integrated it with FastAPI
 
-##Steps for API usage
-1. Download the docker container
-2. Use the following commands:
-   docker build -t Nickara_MNIST_Container .
-   docker run -p 8000:8000 Nickara_MNIST_Container
-
 ##Deployment Process
-1. Download the Nickara_MNIST_Container and open a terminal on your machine
+To build the Docker instance, we had the requirements, model files logged with MLFlow locally, dockerfile, and app code in a folder. 
+We ran the following commands to build and run the image:
+   docker build -t myapp .
+   docker run -p 8000:8000 myapp
+As a user, you can do the following:
+1. Download the myapp and open a terminal on your machine
 2. Use docker start to activate your instance of Docker and run 'docker ps -a' to verify you have downloaded the container
-3. Enter 'docker run -it -d --name Nickara_MNIST_Container image_name bash' to start container and the image
-4. Enter 'docker exec -e VAR_A=1 -e VAR_B=2 Nickara_MNIST_Container env' to start change the environment container if needed. This can be changed to suit your needs.
+3. Enter 'docker run -p 8000:8000 myapp' to start container and the image
+
+##Steps for API usage
+1. Follow the above steps to run the docker image
+2. Use Postman to create a post request to 'http://127.0.0.1:8000/predict'
+3. Put your data as a raw body in the following format:
+   {"data": *your (28, 28, 1) array*}
+
 
 ##
 </pre>
