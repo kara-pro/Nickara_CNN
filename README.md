@@ -95,7 +95,7 @@ We ran the following commands to build and run the image:
    docker build -t myapp .
    docker run -p 8000:8000 myapp
 As a user, you can do the following:
-1. Download the myapp and open a terminal on your machine
+1. Download myapp (found under packages) and open a terminal on your machine
 2. Use docker start to activate your instance of Docker and run 'docker ps -a' to verify you have downloaded the container
 3. Enter 'docker run -p 8000:8000 myapp' to start container and the image
 
