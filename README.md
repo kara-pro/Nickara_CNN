@@ -70,6 +70,18 @@ Training Procedure:
 
 Model Performance
    - Validation Accuracy: 0.9886
+   
+Confusion Matrix
+ [ 969    1    1    0    1    0    1    0    0    0]
+ [   0 1129    0    0    0    0    3    1    1    0]
+ [   2    2 1025    0    0    0    0    8    1    0]
+ [   0    1    2 1000    0    2    0    1    7    0]
+ [   0    0    1    0  977    0    2    4    1    8]
+ [   3    0    0    9    0  889    4    0    1   11]
+ [   3    0    0    0    0    1  947    0    2    0]
+ [   2    2    3    1    0    0    0 1012    1    4]
+ [   1    0    0    0    1    0    1    0  955    2]
+ [   0    0    0    0    3    0    0    2    5  984]
 
 ##Steps for MLFlow Integration
 For MLFLow integration, we used it in conjunction with HyperOpt. Our search space was on the dropout rate, activation functions for the convolution layers, and the size of the convolution layers. We did 5 evalutions and found that the above architecture without the additional dropouts after the convolution layers performed the best. However, by adding more dropouts we got better results.
