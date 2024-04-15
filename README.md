@@ -1,3 +1,4 @@
+<pre>
 Model Description:
 
 Name: Nickara_MNIST_Model
@@ -68,10 +69,7 @@ Training Procedure:
    - Regularization: Dropout (rate=0.2)
 
 Model Performance
-   - Validation Accuracy: 0.85
-   - Precision: 0.86
-   - Recall: 0.84
-   - F1-score: 0.85
+   - Validation Accuracy: 0.9886
 
 ##Steps for MLFlow Integration
 For MLFLow integration, we used it in conjunction with HyperOpt. Our search space was on the dropout rate, activation functions for the convolution layers, and the size of the convolution layers. We did 5 evalutions and found that the above architecture without the additional dropouts after the convolution layers performed the best. However, by adding more dropouts we got better results.
@@ -85,3 +83,4 @@ We registered the best model in MLFlow and integrated it with APIFlow
    docker run -p 8000:8000 Nickara_MNIST_Container
 
 ##Deployment Process
+</pre>
